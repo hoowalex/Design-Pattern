@@ -1,5 +1,5 @@
 ﻿using lightHtml;
-using System.Net;
+using iterator;
 
 class Program
 {
@@ -27,6 +27,38 @@ class Program
 
         Console.WriteLine("Outer HTML of div after removal:");
         Console.WriteLine(div.OuterHtml());
+
+
+        //iterator
+        LightElementNode div2 = new LightElementNode("div", "open", new List<string> { "container" });
+
+        LightElementNode p = new LightElementNode("p", "open", new List<string>());
+        LightTextNode text2 = new LightTextNode("Hello, World!");
+        p.Add(text2);
+
+        LightElementNode span2 = new LightElementNode("span", "open", new List<string>());
+        LightTextNode spanText2 = new LightTextNode("This is a span");
+        span2.Add(spanText2);
+
+        div2.Add(p);
+        div2.Add(span2);
+
+        Console.WriteLine("Depth-First Traversal:");
+        ILightNodeIterator dfsIterator = new DepthFirstIterator(div2);
+        while (dfsIterator.HasNext())
+        {
+            LightNode node = dfsIterator.Next();
+            Console.WriteLine(node.OuterHtml());
+        }
+
+        Console.WriteLine("Breadth-First Traversal:");
+        ILightNodeIterator bfsIterator = new BreadthFirstIterator(div);
+        while (bfsIterator.HasNext())
+        {
+            LightNode node = bfsIterator.Next();
+            Console.WriteLine(node.OuterHtml());
+        }
+
     }
 
 }

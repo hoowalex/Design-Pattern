@@ -24,7 +24,7 @@ namespace lightHtml
             Console.WriteLine("Node inserted into " + tagName + ": " + node.tagName);
         }
 
-        protected virtual void OnRemoved(LightNode node)
+        protected  virtual void OnRemoved(LightNode node)
         {
             Console.WriteLine("Node removed from " + tagName + ": " + node.tagName);
         }

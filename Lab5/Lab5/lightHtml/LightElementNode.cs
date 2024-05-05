@@ -10,6 +10,12 @@ namespace lightHtml
         {
         }
 
+        public List<LightNode> Children
+        {
+            get { return children; }
+            set { children = value; }
+        }
+
         public override void Add(LightNode node)
         {
             children.Add(node);
