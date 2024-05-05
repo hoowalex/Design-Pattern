@@ -1,5 +1,6 @@
 ﻿using lightHtml;
 using iterator;
+using command;
 
 class Program
 {
@@ -30,6 +31,7 @@ class Program
 
 
         //iterator
+        Console.WriteLine();
         LightElementNode div2 = new LightElementNode("div", "open", new List<string> { "container" });
 
         LightElementNode p = new LightElementNode("p", "open", new List<string>());
@@ -58,6 +60,38 @@ class Program
             LightNode node = bfsIterator.Next();
             Console.WriteLine(node.OuterHtml());
         }
+
+
+        //command
+        Console.WriteLine();
+        LightElementNode div3 = new LightElementNode("div", "open", new List<string>{"container"});
+            LightElementNode p3 = new LightElementNode("p", "open", new List<string>());
+            LightTextNode text3 = new LightTextNode("Hello, World!");
+            p3.Add(text3);
+
+            CommandManager commandManager = new CommandManager();
+
+            ICommand addCommand = new AddCommand(div3, p3);
+            commandManager.ExecuteCommand(addCommand);
+
+            Console.WriteLine("HTML after addition:");
+            Console.WriteLine(div3.OuterHtml());
+
+            commandManager.Cancel();
+
+            Console.WriteLine("HTML after addition cancellation:");
+            Console.WriteLine(div3.OuterHtml());
+
+            ICommand removeCommand = new RemoveCommand(div3, p3);
+            commandManager.ExecuteCommand(removeCommand);
+
+            Console.WriteLine("HTML after removal:");
+            Console.WriteLine(div3.OuterHtml());
+
+            commandManager.Cancel();
+
+            Console.WriteLine("HTML after removal cancellation:");
+            Console.WriteLine(div3.OuterHtml());
 
     }
 
