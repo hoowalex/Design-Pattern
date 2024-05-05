@@ -51,6 +51,14 @@ class Program
             Console.WriteLine(node.OuterHtml());
         }
 
+        Console.WriteLine("Breadth-First Traversal:");
+        ILightNodeIterator bfsIterator = new BreadthFirstIterator(div);
+        while (bfsIterator.HasNext())
+        {
+            LightNode node = bfsIterator.Next();
+            Console.WriteLine(node.OuterHtml());
+        }
+
     }
 
 }
