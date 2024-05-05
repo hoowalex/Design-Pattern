@@ -1,4 +1,5 @@
 using System.Text;
+using visitor;
 
 namespace lightHtml
 {
@@ -85,5 +86,22 @@ namespace lightHtml
         {
             Console.WriteLine("Node removed: " + ((LightElementNode)node).tagName);
         }
+
+        public void Accept(INodeVisitor visitor)
+        {
+            visitor.Visit(this);
+            foreach (LightNode child in children)
+            {
+                if (child is LightElementNode)
+                {
+                    (child as LightElementNode).Accept(visitor);
+                }
+                else if (child is LightTextNode)
+                {
+                    (child as LightTextNode).Accept(visitor);
+                }
+            }
+        }
+
     }
 }
