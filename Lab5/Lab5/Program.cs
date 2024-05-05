@@ -2,6 +2,7 @@
 using iterator;
 using command;
 using state;
+using visitor;
 
 class Program
 {
@@ -97,6 +98,7 @@ class Program
 
 
         //state
+        Console.WriteLine();
         LightElementNodeWithState div4 = new LightElementNodeWithState("div", "open", new List<string> { "container" });
         LightElementNodeWithState span4 = new LightElementNodeWithState("span", "open", new List<string>());
 
@@ -109,6 +111,16 @@ class Program
         div4.SetState(new VisibleState());
         div4.Render();
 
+
+        //visitor
+        Console.WriteLine();
+        LightElementNode div5 = new LightElementNode("div", "open", new List<string> { "container" });
+        LightTextNode text5 = new LightTextNode("Hello, World!");
+        div5.Add(text5);
+
+        RenderVisitor renderVisitor = new RenderVisitor();
+
+        div5.Accept(renderVisitor);
     }
 
 }

@@ -1,3 +1,5 @@
+using visitor;
+
 namespace lightHtml
 {
     public class LightTextNode : LightNode
@@ -27,6 +29,10 @@ namespace lightHtml
         public override string InnerHtml()
         {
             return text;
+        }
+        public void Accept(INodeVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

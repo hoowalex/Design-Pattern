@@ -46,5 +46,6 @@ namespace lightHtml
         public abstract string OuterHtml();
 
         public abstract string InnerHtml();
+        
     }
 }
