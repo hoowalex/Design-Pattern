@@ -24,7 +24,7 @@ namespace lightHtml
             Console.WriteLine("Node inserted into " + tagName + ": " + node.tagName);
         }
 
-        protected  virtual void OnRemoved(LightNode node)
+        protected virtual void OnRemoved(LightNode node)
         {
             Console.WriteLine("Node removed from " + tagName + ": " + node.tagName);
         }
@@ -34,9 +34,14 @@ namespace lightHtml
             Console.WriteLine("Styles applied to: " + tagName);
         }
 
-        protected void OnClassesUpdated()
+        protected void OnClassListApplied()
         {
+            Console.WriteLine("Class list applied to: " + tagName);
+        }
 
+        protected void OnTextRendered()
+        {
+            Console.WriteLine("Class list applied to: " + tagName);
         }
 
         public abstract void Add(LightNode node);
@@ -46,6 +51,6 @@ namespace lightHtml
         public abstract string OuterHtml();
 
         public abstract string InnerHtml();
-        
+
     }
 }
